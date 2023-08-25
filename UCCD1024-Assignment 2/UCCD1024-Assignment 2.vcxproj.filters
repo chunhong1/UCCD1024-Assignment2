@@ -38,9 +38,6 @@
     <ClInclude Include="BTNode.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Node.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="BST.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -48,6 +45,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Student.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -16,7 +16,10 @@ void center();
 int MainMenu();
 void center(string);
 
+const char* STUDENT_INFO_FILE = "student.txt";
+
 int main() {
+	BST t1;
 
 	bool stop = false;
 	do {
@@ -25,7 +28,14 @@ int main() {
 
 		switch (choice) {
 		case 1:
+			if (readFile(STUDENT_INFO_FILE, &t1))
+				cout << t1.count << " records have been successfully read." << endl;
+			else
+				cout << STUDENT_INFO_FILE << " is not found." << endl;
 
+			t1.topDownLevelTraversal();
+
+			system("pause");
 			break;
 		case 2:
 
@@ -58,6 +68,67 @@ int main() {
 	} while (!stop);
 	return 0;
 }
+
+bool readFile(const char* filename, BST* t1)
+{
+	ifstream in;
+	char text[256];
+	Student student;
+
+	in.open(filename);
+	
+
+	//return false if the file is not found
+	if (!in)
+		return false;
+	
+	while (!in.eof())
+	{
+		for (int i = 0; i < 3; i++)
+			in >> text;
+
+		in >> student.id;
+
+		for (int i = 0; i < 2; i++)
+			in >> text;
+
+		in >> student.name;
+		in.getline(text, 256);
+		strcat_s(student.name, text);
+
+		for (int i = 0; i < 2; i++)
+			in >> text;
+
+		in >> student.address;
+		in.getline(text, 256);
+		strcat_s(student.address, text);
+
+		for (int i = 0; i < 2; i++)
+			in >> text;
+
+		in >> student.DOB;
+
+		for (int i = 0; i < 3; i++)
+			in >> text;
+
+		in >> student.phone_no;
+
+		for (int i = 0; i < 2; i++)
+			in >> text;
+
+		in >> student.course;
+
+		for (int i = 0; i < 2; i++)
+			in >> text;
+
+		in >> student.cgpa;
+
+		t1->insert(student);
+	}
+	in.close();
+	return true;
+}
+
 void center(string string) {
 	const int WIDTH = 115;
 	int space = (WIDTH - string.length()) / 2;
