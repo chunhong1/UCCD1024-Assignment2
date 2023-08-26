@@ -258,6 +258,50 @@ void BST::case3(BTNode *cur) {
 	free(is);
 }
 
+bool BST::deepestNodes()
+{
+	//return false if it is a empty tree
+	if (root == NULL)
+		return false;
 
+	int height = getHeight(root);
+
+	cout << "\nStudent ID of the deepest nodes:" << endl;
+	deepestNodes2(root, 1, height);
+	cout << "\n\n";
+
+	return true;
+}
+
+//calculate the height of tree
+int BST::getHeight(BTNode* cur)
+{
+	if (cur == NULL)
+		return 0;
+
+	int leftHeight = getHeight(cur->left);
+	int rightHeight = getHeight(cur->right);
+
+	return max(leftHeight, rightHeight) + 1;
+}
+
+void BST::deepestNodes2(BTNode* cur, int currentHeight, int maxHeight)
+{
+	if (cur == NULL)
+		return;
+
+	//print the student ID when the current height = height of tree
+	if (currentHeight == maxHeight)
+	{
+		cout << cur->item.id;
+		cout << "\t";
+	}
+
+	//tranverse to the left node
+	deepestNodes2(cur->left, currentHeight + 1, maxHeight);
+
+	//tranverse to the right node
+	deepestNodes2(cur->right, currentHeight + 1, maxHeight);
+}
 
 

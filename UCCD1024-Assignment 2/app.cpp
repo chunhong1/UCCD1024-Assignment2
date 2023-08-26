@@ -33,12 +33,13 @@ int main() {
 			else
 				cout << STUDENT_INFO_FILE << " is not found." << endl;
 
-			t1.topDownLevelTraversal();
-
 			system("pause");
 			break;
 		case 2:
+			if (!t1.deepestNodes())
+				cout << "The BST is empty." << endl;
 
+			system("pause");
 			break;
 		case 3:
 

@@ -45,6 +45,10 @@ struct BST {
 		int countNode();		// count number of tree nodes
 		bool findGrandsons(type);	// find the grandsons of an input father item
 
+
+		bool deepestNodes();
+		int getHeight(BTNode*);
+		void deepestNodes2(BTNode*, int, int);
 		
 	
 };
