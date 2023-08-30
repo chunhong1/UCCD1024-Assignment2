@@ -45,3 +45,19 @@ DOB = 15-08-1965
 Phone Number = 456-4321
 Course = IB
 CGPA = 3.23678
+
+Student Id = 150
+Name = Hello World
+Address = 123 Parklane St, Malaysia 432123
+DOB = 15-08-1965
+Phone Number = 456-4321
+Course = IB
+CGPA = 4.00000
+
+Student Id = 83
+Name = Bye Bye World
+Address = 50 Mayfair St, Malaysia 234653
+DOB = 15-02-1963
+Phone Number = 456-1234
+Course = IB
+CGPA = 3.23238

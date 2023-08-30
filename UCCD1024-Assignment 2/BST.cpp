@@ -4,6 +4,7 @@
 #include "BST.h"
 
 
+
 using namespace std;
 
 
@@ -304,4 +305,64 @@ void BST::deepestNodes2(BTNode* cur, int currentHeight, int maxHeight)
 	deepestNodes2(cur->right, currentHeight + 1, maxHeight);
 }
 
+//bool BST::printLevelNodes() {
+//	BTNode* cur = root;
+//	Queue q;
+//	int i=1;
+//	q.enqueue(root);
+//	if (root == NULL)  return false;
+//	while (!q.empty()) {
+//		q.dequeue(cur);
+//		cout << "Level " << i << ": "<< cur->item.id << " ";;
+//		if(cur->left!=NULL)
+//		{
+//			q.enqueue(cur->left);
+//		}
+//		if (cur->right != NULL)
+//		{
+//			q.enqueue(cur->right);
+//		}
+//		i++;
+//	}
+//	cout << endl;
+//	return true;
+//
+//}
 
+bool BST::printLevelNodes() {
+	BTNode* cur;
+	Queue q;
+	int currentLevel = 1;
+	int nodesInCurrentLevel = 1;
+	int nodesInNextLevel = 0;
+
+	if (root == NULL) return false;
+	q.enqueue(root);
+	while (!q.empty()) {
+		cout << "Level " << currentLevel << ": ";
+
+		for (int i = 0; i < nodesInCurrentLevel; i++) {
+			
+			q.dequeue(cur);
+
+			cout << cur->item.id << " ";
+
+			if (cur->left != NULL) {
+				q.enqueue(cur->left);
+				nodesInNextLevel++;
+			}
+
+			if (cur->right != NULL) {
+				q.enqueue(cur->right);
+				nodesInNextLevel++;
+			}
+		}
+
+		cout << endl;
+		currentLevel++;
+		nodesInCurrentLevel = nodesInNextLevel;
+		nodesInNextLevel = 0;
+	}
+
+	return true;
+}

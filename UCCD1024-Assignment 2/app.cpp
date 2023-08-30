@@ -45,6 +45,11 @@ int main() {
 
 			break;
 		case 4:
+			if (!t1.printLevelNodes()) 
+			{
+				cout << "The BST is empty" << endl;;
+			}
+			system("pause");
 
 			break;
 		case 5:
