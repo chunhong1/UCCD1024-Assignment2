@@ -305,29 +305,7 @@ void BST::deepestNodes2(BTNode* cur, int currentHeight, int maxHeight)
 	deepestNodes2(cur->right, currentHeight + 1, maxHeight);
 }
 
-//bool BST::printLevelNodes() {
-//	BTNode* cur = root;
-//	Queue q;
-//	int i=1;
-//	q.enqueue(root);
-//	if (root == NULL)  return false;
-//	while (!q.empty()) {
-//		q.dequeue(cur);
-//		cout << "Level " << i << ": "<< cur->item.id << " ";;
-//		if(cur->left!=NULL)
-//		{
-//			q.enqueue(cur->left);
-//		}
-//		if (cur->right != NULL)
-//		{
-//			q.enqueue(cur->right);
-//		}
-//		i++;
-//	}
-//	cout << endl;
-//	return true;
-//
-//}
+
 
 bool BST::printLevelNodes() {
 	BTNode* cur;
