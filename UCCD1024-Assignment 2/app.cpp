@@ -10,9 +10,6 @@
 using namespace std;
 
 bool readFile(const char *, BST *);
-int Mainmenu();
-void center();
-
 int MainMenu();
 void center(string);
 
@@ -20,7 +17,7 @@ const char* STUDENT_INFO_FILE = "student.txt";
 
 int main() {
 	BST t1;
-
+	type student;
 	bool stop = false;
 	do {
 		system("cls");
@@ -45,15 +42,21 @@ int main() {
 
 			break;
 		case 4:
-			if (!t1.printLevelNodes()) 
-			{
-				cout << "The BST is empty" << endl;;
+			cout << "Please enter Student ID you would like to create a cloned subtree for:";
+			cin >> student.id;
+			if (!t1.CloneSubtree(t1, student)) {
+				cout << "Cannot clone subtree" << endl;
 			}
 			system("pause");
 
 			break;
 		case 5:
-
+			if (!t1.printLevelNodes()) 
+			{
+				cout << "The BST is empty" << endl;;
+			}
+			
+			system("pause");
 			break;
 
 		case 6:

@@ -50,6 +50,10 @@ struct BST {
 		int getHeight(BTNode*);
 		void deepestNodes2(BTNode*, int, int);
 		bool printLevelNodes();
+		bool CloneSubtree(BST, type);
+		void CloneSubtree2(BST&, BTNode*);
+		//void insertNode(BTNode*&, BTNode*);
+		
 	
 };
 
