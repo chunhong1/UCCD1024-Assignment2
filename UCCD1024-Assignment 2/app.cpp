@@ -17,6 +17,7 @@ const char* STUDENT_INFO_FILE = "student.txt";
 
 int main() {
 	BST t1;
+	BST tree;
 	type student;
 	bool stop = false;
 	do {
@@ -60,6 +61,14 @@ int main() {
 			break;
 
 		case 6:
+			if (t1.printPath()) {
+				cout << "Print Path successful." << endl;
+			}
+			else {
+				cout << "BST is empty." << endl;
+			}
+
+			system("pause");
 
 			break;
 

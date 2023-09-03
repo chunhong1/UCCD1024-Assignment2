@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <algorithm>
+#include<string>
 #include "BST.h"
 
 
@@ -396,4 +397,37 @@ bool BST::printLevelNodes() {
 	}
 
 	return true;
+}
+
+
+
+bool BST::printPath() {
+	if (root == NULL) {
+		cout << "Tree is empty." << endl;
+		return false;
+	}
+
+	cout << "Below are all the external paths for the tree:" << endl;
+	printExternalPaths(root, "");
+	return true;
+
+}
+
+void BST::printExternalPaths(BTNode* cur, string path) {
+	if (cur == NULL) {
+		return;
+	}
+
+	// Append the current node's ID to the path
+	path += to_string(cur->item.id) + "   ";
+
+	// If it's a leaf node, print the path
+	if (cur->left == NULL && cur->right == NULL) {
+		cout << path << endl;
+		return;
+	}
+
+	// Recursively traverse left and right subtrees
+	printExternalPaths(cur->left, path);
+	printExternalPaths(cur->right, path);
 }
