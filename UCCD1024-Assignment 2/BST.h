@@ -49,6 +49,9 @@ struct BST {
 		bool deepestNodes();
 		int getHeight(BTNode*);
 		void deepestNodes2(BTNode*, int, int);
+		bool display(int, int);
+		void displayAscending(BTNode*, ostream&);
+		void displayDescending(BTNode*, ostream&);
 		bool printLevelNodes();
 		bool printPath();
 		bool CloneSubtree(BST, type);

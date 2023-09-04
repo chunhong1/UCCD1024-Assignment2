@@ -358,7 +358,65 @@ void BST::CloneSubtree2(BST& t2, BTNode* cur) {
 	CloneSubtree2(t2, cur->right);
 }
 
+bool BST::display(int order, int source) {
+	if (root == NULL) {
+		cout << "The BST is empty." << endl;
+		return false;
+	}
 
+	ofstream outFile;
+	if (source == 2) {
+		outFile.open("student-info.txt");
+		if (!outFile.is_open()) {
+			cout << "Unable to open the output file." << endl;
+			return false;
+		}
+	}
+
+	if (order == 1) {
+		if (source == 1) {
+			displayAscending(root, cout); //print to ascending screen
+		}
+		else if (source == 2) {
+			displayAscending(root, outFile); //print to ascending file
+			cout << endl;
+			cout << "BST printed to file." << endl;
+		}
+	}
+
+	if (order == 2) {
+		if (source == 1) {
+			displayDescending(root, cout); //print descending to screen
+		}
+		else if (source == 2) {
+			displayDescending(root, outFile); //print descending to file
+			cout << endl;
+			cout << "BST printed to file." << endl;
+		}
+	}
+
+	if (source == 2) {
+		outFile.close();
+	}
+
+	return true;
+}
+
+void BST::displayAscending(BTNode* cur, ostream& outFile) {
+	if (cur != NULL) {
+		displayAscending(cur->left, outFile);
+		cur->item.print(outFile);
+		displayAscending(cur->right, outFile);
+	}
+}
+
+void BST::displayDescending(BTNode* cur, ostream& outFile) {
+	if (cur != NULL) {
+		displayDescending(cur->right, outFile);
+		cur->item.print(outFile);
+		displayDescending(cur->left, outFile);
+	}
+}
 
 
 bool BST::printLevelNodes() {

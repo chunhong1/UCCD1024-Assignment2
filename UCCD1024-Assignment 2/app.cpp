@@ -40,7 +40,18 @@ int main() {
 			system("pause");
 			break;
 		case 3:
-
+			int order, source;
+			cout << "Enter order (1-for ascending, 2-for descending):";
+			cin >> order;
+			cout << "Enter source (1-for screen, 2-for file):";
+			cin >> source;
+			if (t1.display(order, source)) {
+				cout << "BST has been displayed." << endl;
+			}
+			else {
+				cout << "Failed to display BST." << endl;
+			}
+			system("pause");
 			break;
 		case 4:
 			cout << "Please enter Student ID you would like to create a cloned subtree for:";
