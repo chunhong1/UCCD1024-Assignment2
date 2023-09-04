@@ -18,7 +18,6 @@ const char* STUDENT_INFO_FILE = "student.txt";
 
 int main() {
 	BST t1;
-	BST tree;
 	Student student;
 	bool stop = false;
 	do {
