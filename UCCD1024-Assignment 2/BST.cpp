@@ -382,17 +382,28 @@ bool BST::display(int order, int source) {
 			cout << endl;
 			cout << "BST printed to file." << endl;
 		}
+		else {
+			cout << "Invalid source value. Please enter 1-for screen or 2-for file." << endl;
+			return false;
+		}
 	}
-
-	if (order == 2) {
+	else if (order == 2) {
 		if (source == 1) {
-			displayDescending(root, cout); //print descending to screen
+		displayDescending(root, cout); //print descending to screen
 		}
 		else if (source == 2) {
 			displayDescending(root, outFile); //print descending to file
 			cout << endl;
 			cout << "BST printed to file." << endl;
 		}
+		else {
+			cout << "Invalid source value. Please enter 1-for screen or 2-for file." << endl;
+			return false;
+		}
+	}
+	else {
+		cout << "Invalid order value. Use 1-for ascending or 2-for descending." << endl;
+		return false;
 	}
 
 	if (source == 2) {
