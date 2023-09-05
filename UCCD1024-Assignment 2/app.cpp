@@ -10,6 +10,7 @@
 using namespace std;
 
 bool readFile(const char *, BST *);
+bool isDuplicate(BST*, Student&, BTNode*);
 int MainMenu();
 void center(string);
 
@@ -17,7 +18,6 @@ const char* STUDENT_INFO_FILE = "student.txt";
 
 int main() {
 	BST t1;
-	BST tree;
 	type student;
 	bool stop = false;
 	do {
@@ -152,10 +152,31 @@ bool readFile(const char* filename, BST* t1)
 
 		in >> student.cgpa;
 
-		t1->insert(student);
+		//check for duplicate
+		if(!isDuplicate(t1, student, t1->root))
+			t1->insert(student);
 	}
 	in.close();
 	return true;
+}
+
+bool isDuplicate(BST* tree, Student& student, BTNode* cur)
+{
+	if (tree->empty())
+		return false;
+
+	if (cur == NULL)
+		return false;
+
+	if (cur->item.id == student.id) {
+		return true;
+	}
+
+	bool left_found = isDuplicate(tree, student, cur->left);
+	bool right_found = isDuplicate(tree, student, cur->right);
+
+
+	return left_found||right_found;
 }
 
 void center(string string) {

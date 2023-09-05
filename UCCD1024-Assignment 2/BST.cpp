@@ -259,7 +259,7 @@ void BST::case3(BTNode *cur) {
 	// remove IS Node
 	free(is);
 }
-
+//**************************************2*********************************
 bool BST::deepestNodes()
 {
 	//return false if it is a empty tree
@@ -306,58 +306,7 @@ void BST::deepestNodes2(BTNode* cur, int currentHeight, int maxHeight)
 	deepestNodes2(cur->right, currentHeight + 1, maxHeight);
 }
 
-
-bool BST::CloneSubtree(BST t1, type item) {
-	BST t2; // Initialize t2
-
-	if (t1.root == NULL) {
-		return false; 
-	}
-
-	BTNode* cur = t1.root;
-	BTNode* cur2 = NULL; 
-
-	while (cur != NULL) {
-		if (cur->item.id == item.id) {
-		
-			t2.root = NULL; 
-			CloneSubtree2(t2, cur);
-			break;
-		}
-		else if (cur->item.id > item.id) {
-			cur = cur->left;
-		}
-		else {
-			cur = cur->right;
-		}
-	}
-	if (t2.root == NULL) {
-		return false; 
-	}
-
-	cout << "\nStudents in Subtree t1: " << endl;
-	t1.preOrderPrint();
-	cout << "______________________________________\n\n";
-	cout << "Cloned Subtree from student: " << item.id << endl;
-	t2.preOrderPrint();
-	return true;
-}
-
-void BST::CloneSubtree2(BST& t2, BTNode* cur) {
-	if (cur == NULL) {
-		return;
-	}
-	BTNode* cur2=new BTNode(cur->item);
-	if (cur2 != NULL) {
-	    cur2->item = cur->item;
-		t2.insert(cur2->item);
-	}
-	
-	
-	CloneSubtree2(t2, cur->left);
-	CloneSubtree2(t2, cur->right);
-}
-
+//********************************************3************************
 bool BST::display(int order, int source) {
 	if (root == NULL) {
 		cout << "The BST is empty." << endl;
@@ -428,8 +377,58 @@ void BST::displayDescending(BTNode* cur, ostream& outFile) {
 		displayDescending(cur->left, outFile);
 	}
 }
+//************************4**************************************
+bool BST::CloneSubtree(BST t1, type item) {
+	BST t2; // Initialize t2
+
+	if (t1.root == NULL) {
+		return false;
+	}
+
+	BTNode* cur = t1.root;
+	BTNode* cur2 = NULL;
+
+	while (cur != NULL) {
+		if (cur->item.id == item.id) {
+
+			t2.root = NULL;
+			CloneSubtree2(t2, cur);
+			break;
+		}
+		else if (cur->item.id > item.id) {
+			cur = cur->left;
+		}
+		else {
+			cur = cur->right;
+		}
+	}
+	if (t2.root == NULL) {
+		return false;
+	}
+
+	cout << "\nStudents in Subtree t1: " << endl;
+	t1.preOrderPrint();
+	cout << "______________________________________\n\n";
+	cout << "Cloned Subtree from student: " << item.id << endl;
+	t2.preOrderPrint();
+	return true;
+}
+
+void BST::CloneSubtree2(BST& t2, BTNode* cur) {
+	if (cur == NULL) {
+		return;
+	}
+	BTNode* cur2 = new BTNode(cur->item);
+	if (cur2 != NULL) {
+		cur2->item = cur->item;
+		t2.insert(cur2->item);
+	}
 
 
+	CloneSubtree2(t2, cur->left);
+	CloneSubtree2(t2, cur->right);
+}
+//********************************************5**********************
 bool BST::printLevelNodes() {
 	BTNode* cur;
 	Queue q;
@@ -468,7 +467,7 @@ bool BST::printLevelNodes() {
 	return true;
 }
 
-
+//*****************************6**********************
 
 bool BST::printPath() {
 	if (root == NULL) {
