@@ -45,13 +45,15 @@ int main() {
 			cin >> order;
 			if (order != 1 && order != 2) {
 				cout << "Invalid order value. Please enter 1-for ascending or 2-for descending." << endl;
-				return false;
+				system("pause");
+				break;
 			}
 			cout << "Enter source (1-for screen, 2-for file):";
 			cin >> source;
 			if (source != 1 && source != 2) {
 				cout << "Invalid source value. Please enter 1-for screen or 2-for file." << endl;
-				return false;
+				system("pause");
+				break;
 			}
 			if (t1.display(order, source)) {
 				cout << "BST has been displayed." << endl;
