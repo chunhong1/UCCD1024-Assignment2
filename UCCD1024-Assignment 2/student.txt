@@ -61,3 +61,12 @@ DOB = 15-02-1963
 Phone Number = 456-1234
 Course = IB
 CGPA = 3.23238
+
+Student Id = 82
+Name = John
+Address = 12 White Chapel, Malaysia 234653
+DOB = 12-05-1909
+Phone Number = 456-1234
+Course = IB
+CGPA = 2.23638
+

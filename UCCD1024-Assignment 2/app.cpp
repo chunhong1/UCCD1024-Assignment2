@@ -18,7 +18,7 @@ const char* STUDENT_INFO_FILE = "student.txt";
 
 int main() {
 	BST t1;
-	Student student;
+	type student;
 	bool stop = false;
 	do {
 		system("cls");
