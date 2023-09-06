@@ -181,9 +181,13 @@ bool isDuplicate(BST* tree, Student& student, BTNode* cur)
 	if (cur->item.id == student.id) {
 		return true;
 	}
+	bool left_found = false;
+	bool right_found = false;
 
-	bool left_found = isDuplicate(tree, student, cur->left);
-	bool right_found = isDuplicate(tree, student, cur->right);
+	if(cur->item.id > student.id)
+		left_found = isDuplicate(tree, student, cur->left);
+	else
+		right_found = isDuplicate(tree, student, cur->right);
 
 
 	return left_found||right_found;
