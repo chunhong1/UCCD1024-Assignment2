@@ -371,22 +371,20 @@ void BST::displayDescending(BTNode* cur, ostream& outFile) {
 //************************4**************************************
 bool BST::CloneSubtree(BST t1, type item) {
 	BST t2; // Initialize t2
+	BTNode* cur = t1.root;
+	BTNode* cur2 = NULL;
+	t2.root = NULL;
 
 	if (t1.root == NULL) {
 		return false;
 	}
 
-	BTNode* cur = t1.root;
-	BTNode* cur2 = NULL;
-
 	while (cur != NULL) {
-		if (cur->item.id == item.id) {
-
-			t2.root = NULL;
-			CloneSubtree2(t2, cur);
+		if (cur->item.id == item.id) { // Given that current item.id is equal to user input
+			CloneSubtree2(t2, cur);// Call clonesubtree2 function
 			break;
 		}
-		else if (cur->item.id > item.id) {
+		else if (cur->item.id > item.id) {// if current item.id is larger than user input
 			cur = cur->left;
 		}
 		else {
@@ -398,25 +396,23 @@ bool BST::CloneSubtree(BST t1, type item) {
 	}
 
 	cout << "\nStudents in Subtree t1: " << endl;
-	t1.preOrderPrint();
+	t1.preOrderPrint(); //preorder print function is called to print tree t1
 	cout << "______________________________________\n\n";
-	cout << "Cloned Subtree from student: " << item.id << endl;
-	t2.preOrderPrint();
+	cout << "Cloned Subtree (t2) from student: " << item.id << endl;
+	t2.preOrderPrint(); //preorder print function is called to print tree t1
 	return true;
 }
 
 void BST::CloneSubtree2(BST& t2, BTNode* cur) {
-	if (cur == NULL) {
+	if (cur == NULL) {  
 		return;
 	}
-	BTNode* cur2 = new BTNode(cur->item);
+	BTNode* cur2 = new BTNode(cur->item);//current item in node in t1 will be coppied to cur2
 	if (cur2 != NULL) {
 		cur2->item = cur->item;
-		t2.insert(cur2->item);
+		t2.insert(cur2->item);// insert function is called to place current item in tree 2
 	}
-
-
-	CloneSubtree2(t2, cur->left);
+	CloneSubtree2(t2, cur->left); //recursion is used to repeat the function CloneSubtree2 to copy and insert subtree of target Node from tree 1 to tree 2.
 	CloneSubtree2(t2, cur->right);
 }
 //********************************************5**********************
@@ -428,23 +424,23 @@ bool BST::printLevelNodes() {
 	int nodesInNextLevel = 0;
 
 	if (root == NULL) return false;
-	q.enqueue(root);
+	q.enqueue(root);// enqueue the root of t1 
 	while (!q.empty()) {
-		cout << "Level " << currentLevel << ": ";
+		cout << "Level " << currentLevel << ": "; 
 
 		for (int i = 0; i < nodesInCurrentLevel; i++) {
 			
-			q.dequeue(cur);
+			q.dequeue(cur);// cur node is dequeued
 
 			cout << cur->item.id << " ";
 
 			if (cur->left != NULL) {
-				q.enqueue(cur->left);
+				q.enqueue(cur->left);//enqueue the left node of current node
 				nodesInNextLevel++;
 			}
 
 			if (cur->right != NULL) {
-				q.enqueue(cur->right);
+				q.enqueue(cur->right);//enqueue the right node of current node
 				nodesInNextLevel++;
 			}
 		}
